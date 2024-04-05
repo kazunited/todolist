@@ -1,13 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React from 'react';
+import{AntDesign} from '@expo/vector-icons'
+import colors from './Colors'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class App extends React.Component {
+  render(){
+    return (
+      <View style={styles.container}>
+        <View style={{flexDirection: "row"}}>
+           <View style={styles.divider} />
+           <Text style={styles.title}>
+              Todo<Text style={{fontWeight: "300", color: colors.bule}}>Lists</Text>
+          </Text>
+          <View style={styles.divider} />
+        </View>
+
+        <View style={{marginVertical: 48}}>
+          <TouchableOpacity style={styles.addList}>
+            <AntDesign name="plus" size={16} color={colors.blue} />
+          </TouchableOpacity>
+
+          <Text style={styles.add}>Add List</Text>
+
+        </View>
+      </View>
+    );
+
+  }
+  
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +38,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  divider: {
+    backgroundColor: colors.lightBlue,
+    height: 1,
+    flex: 1,
+    alignSelf: "center"
+  },
+  title: {
+    fontSize: 38,
+    fontWeight:"800",
+    color: colors.black,
+    paddingHorizontal: 64
+  },
+  addList: {
+    borderWidth: 2,
+    borderColor: colors.lightBlue,
+    borderRadius: 4,
+    padding:16,
+    alignItems:"center",
+    justifyContent:"center"
+
+  },
+  add: {
+    color: colors.blue,
+    fontWeight: "600",
+    fontSice: 14,
+    marginTop: 8
+
+  }
 });
